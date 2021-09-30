@@ -1,19 +1,20 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-
-
+import { Button, StyleSheet, Text, View } from 'react-native';
+import Card from '../components/Card';
+import Input from '../components/Input';
+import Colors from '../constant/color';
 const StartGameScreen = () => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Start a new Game</Text>
-            <View style={styles.inputContainer}>
+            <Card style={styles.inputContainer}>
                 <Text >Select a New Nubmer</Text>
-                <TextInput placeholder="white something" />
+                <Input style={styles.input} blurOnSubmit autoCapitalize='none' autoCorrect={false} keyboardType='number-pad' maxLength={11} />
                 <View style={styles.buttonContainer}>
-                    <Button style={styles.buttonStyle} title='Reset' onPress={() => { }} />
-                    <Button style={styles.buttonStyle} title='Confirm' onPress={() => { }} />
+                    <View style={styles.buttonStyle}><Button title='Reset' color={Colors.accent} onPress={() => { }} /></View>
+                    <View style={styles.buttonStyle}><Button title='Confirm' color={Colors.primary} onPress={() => { }} /></View>
                 </View>
-            </View>
+            </Card>
         </View>
     )
 }
@@ -25,25 +26,36 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontSize:20,
-        marginVertical:10,
+        fontSize: 20,
+        marginVertical: 10,
     },
     inputContainer: {
-        width:300,
+        width: 300,
         maxWidth: '80%',
-        alignItems:'center'
+        alignItems: 'center',
+        // shadowColor:'black',
+        // shadowRadius:6,
+        // shadowOffset:{width:0, height:2},
+        // shadowOpacity: 0.26,
+        // elevation:8,
+        // backgroundColor:'white',
+        // padding: 20,
+        // borderRadius:10,
     },
     buttonContainer: {
-        
+
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
-        paddingHorizontal:15,
+        paddingHorizontal: 15,
     },
 
-    // buttonStyle:{
-    //     marginLeft:30
-    // }
+    buttonStyle: {
+        width: 100,
+    },
+    input: {
+        width: 50
+    }
 })
 
 export default StartGameScreen;
