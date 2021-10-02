@@ -1,67 +1,72 @@
 import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View,Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 
 
-const  generateRandomBetween = (min, max, exclude) =>{
+const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    const rndnum = Math.floor(Math.random() * (max -min)) + min;
+    const rndnum = Math.floor(Math.random() * (max - min)) + min;
 
-    if(rndnum === exclude){
-        return generateRandomBetween(min,max,exclude);
+    if (rndnum === exclude) {
+        return generateRandomBetween(min, max, exclude);
     }
-    else{
+    else {
         return rndnum;
     }
 }
 
-const GameScreen = (props) =>{
-    const [currentGuess, setCurrentGuess] = 
-    useState(generateRandomBetween(1,100, props.userChoice));
+const GameScreen = (props) => {
+    const [currentGuess, setCurrentGuess] =
+        useState(generateRandomBetween(1, 100, props.userChoice));
 
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
 
-   const nextGuessHandler = (direction) =>{
-       if(
-           (direction==='lower' && currentGuess < props.userChoice) ||
-           (direction==='greater' && currentGuess > props.userChoice)
+    const nextGuessHandler = (direction) => {
+        if (
+            (direction === 'lower' && currentGuess < props.userChoice) ||
+            (direction === 'greater' && currentGuess > props.userChoice)
         ) {
-            Alert.alert("don't lie!", 'you know that is wrong......',[
-                {text:'sorry!',style:'cancel'}
+            Alert.alert("don't lie!", 'you know that is wrong......', [
+                { text: 'sorry!', style: 'cancel' }
             ]);
-            return; 
+            return;
         }
-        if(direction === 'lower'){
-           currentHigh.current = currentGuess;
-        }else{
+        if (direction === 'lower') {
+            currentHigh.current = currentGuess;
+        } else {
             currentLow.current = currentGuess;
         }
-        const nextNumber = generateRandomBetween(currentLow.current, currentHigh.current, current.current)
+        const nextNumber = generateRandomBetween
+        (
+            currentLow.current,
+             currentHigh.current, 
+             currentGuess
+        )
         setCurrentGuess(nextNumber)
-   }
-    return(
+    }
+    return (
         <View style={styles.screen}>
-                <Text>Opponent's Guess</Text>
-                <NumberContainer>{currentGuess}</NumberContainer>
-                <Card style={styles.buttonContainer}>
-                    <Button title="lower" onPress={nextGuessHandler.bind(this,'lower')}/>
-                    <Button title="Greater" onPress={nextGuessHandler.bind(this,'greater')}/>
-                </Card>
+            <Text>Opponent's Guess</Text>
+            <NumberContainer>{currentGuess}</NumberContainer>
+            <Card style={styles.buttonContainer}>
+                <Button title="lower" onPress={nextGuessHandler.bind(this, 'lower')} />
+                <Button title="Greater" onPress={nextGuessHandler.bind(this, 'greater')} />
+            </Card>
         </View>
     )
 }
 
-const styles =  StyleSheet.create({
-    screen:{
-        flex:1,
-        padding:10,
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        padding: 10,
         alignItems: 'center',
 
     },
-    buttonContainer:{
+    buttonContainer: {
         flexDirection: 'row',
         maxWidth: '80%',
         width: 300,
