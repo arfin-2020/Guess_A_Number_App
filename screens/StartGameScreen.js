@@ -5,7 +5,7 @@ import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import Colors from '../constant/color';
 
-const StartGameScreen = () => {
+const StartGameScreen = (props) => {
 
     const [enterdValue, setEnterValue] = useState('')
     const [confirmed, setConfirmed] = useState(false);
@@ -38,7 +38,8 @@ const StartGameScreen = () => {
                 <Card style={styles.summaryContainer}>
                     <Text>You are selected</Text>
                     <NumberContainer children={selectedNumber}/>
-                    <Button title='start Game'/>
+                    <Button title='start Game' onPress={()=>props.onStartGame(selectedNumber)}/>
+                    
                 </Card>
             )
     }
