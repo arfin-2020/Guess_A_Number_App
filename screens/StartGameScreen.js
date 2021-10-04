@@ -4,6 +4,8 @@ import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import Colors from '../constant/color';
+import BodyText from '../components/BodyText';
+
 
 const StartGameScreen = (props) => {
 
@@ -21,7 +23,7 @@ const StartGameScreen = (props) => {
     }
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enterdValue);
-        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99999999999) {
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
             Alert.alert('Invalid Number!', 'Number has to be a number between 1 to 99.',
                 [{ text: 'Okey', style: 'destructive', onPress: resetInputHandler }])
             return;
@@ -50,12 +52,12 @@ const StartGameScreen = (props) => {
             <View style={styles.screen}>
                 <Text style={styles.title}>Start a new Game</Text>
                 <Card style={styles.inputContainer}>
-                    <Text >Select a New Nubmer</Text>
+                    <BodyText>Select a New Nubmer</BodyText>
                     <Input style={styles.input} blurOnSubmit
                         autoCapitalize='none'
                         autoCorrect={false}
                         keyboardType='number-pad'
-                        maxLength={11}
+                        maxLength={2}
                         onChangeText={numberInputHandler}
                         value={enterdValue}
                     />
@@ -81,9 +83,9 @@ const styles = StyleSheet.create({
         fontSize: 40,
         marginVertical: 10,
         fontFamily: 'DancingScript-Regular',
-        // fontWeight:'bold',
-      
+       
     },
+  
     inputContainer: {
         width: 300,
         maxWidth: '80%',
