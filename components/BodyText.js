@@ -1,8 +1,16 @@
-import react from 'react-native';
-import {Text, View, StyleSheet} from 'react-native' ;
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 
-const BodyText = (props) => <Text style={styles.body}>{props.children}</Text>
+const BodyText = (props) => {
+    return(
+        <View>
+        <Text style={styles.body}>{props.children}</Text>
+        </View>
+    )
+}
+    
+
 
 
 const styles = StyleSheet.create({
@@ -11,5 +19,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
     }
 })
+
 export default BodyText;
 

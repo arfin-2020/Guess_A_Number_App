@@ -1,12 +1,21 @@
-import react from 'react-native';
-import {Text, View, StyleSheet} from 'react-native' ;
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 
-const TitleText = (props) => <Text style={styles.body}>{props.children}</Text>
+const TitleText = (props) => {
+    return(
+        <View>
+            <Text style={{...styles.title, ...props.style}}>{props.children}</Text>
+        </View>
+    )
+}
+
+    
+
 
 
 const styles = StyleSheet.create({
-    body:{
+    title:{
         fontFamily: 'OpenSans-Bold',
         fontSize: 18,
     }
