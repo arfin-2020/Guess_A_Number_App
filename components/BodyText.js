@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const BodyText = (props) => {
     return(
         <View>
-        <Text style={styles.body}>{props.children}</Text>
+        <Text style={{...styles.body, ...props.style}}>{props.children}</Text>
         </View>
     )
 }
@@ -15,7 +15,7 @@ const BodyText = (props) => {
 
 const styles = StyleSheet.create({
     body:{
-        fontFamily: 'OpenSans-Regular',
+        fontFamily: 'DancingScript-Bold',
         fontSize: 18,
     }
 })
