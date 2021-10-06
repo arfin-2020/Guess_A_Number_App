@@ -1,9 +1,14 @@
+
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ButtonMain from '../components/ButtonMain';
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import defaultStyle from '../constant/default-style';
-import ButtonMain from '../components/ButtonMain';
+
+
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -63,8 +68,14 @@ const GameScreen = (props) => {
             <Text style={defaultStyle.title}>Opponent's Guess</Text>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card style={styles.buttonContainer}>
-                <ButtonMain children={"lower"}  onPress={nextGuessHandler.bind(this, 'lower')} />
-                <ButtonMain children={"Greater"} onPress={nextGuessHandler.bind(this, 'greater')} />
+                <ButtonMain children={"lower"} onPress={nextGuessHandler.bind(this, 'lower')}>
+                    
+                    <AntDesign name="minus" size={30} color="white" /> 
+                </ButtonMain>
+                <ButtonMain children={"Greater"} onPress={nextGuessHandler.bind(this, 'greater')} >
+                <Icon name="add-outline" size={30} color="white" />
+                </ButtonMain>
+              
             </Card>
         </View>
     )
