@@ -15,7 +15,7 @@ const BodyText = (props) => {
 
 const styles = StyleSheet.create({
     body:{
-        fontFamily: 'DancingScript-Bold',
+        fontFamily: 'OpenSans-Bold',
         fontSize: 18,
     }
 })

@@ -21,7 +21,7 @@ const GameOverScreen = (props) => {
                 />
             </View>
             <View style={styles.resultContainer}>
-                <BodyText style={styles.resultText}> তোমার ফোনে আরও <Text style={styles.hightlight}>{roundsNumber} </Text> রাউন্ট লাগবে <Text style={styles.hightlight}>{userNumber}</Text> নাম্বাার আন্দাজ করার জন্য। </BodyText>
+                <BodyText style={styles.resultText}> তোমার ফোনে আরও <Text style={styles.hightlight}>{roundsNumber} </Text> রাউন্ট লাগবে <Text style={styles.hightlight}>{userNumber}</Text> নাম্বার আন্দাজ করার জন্য। </BodyText>
             </View>
             <ButtonMain children={'NEW Game'} onPress={newGame} />
         </View>

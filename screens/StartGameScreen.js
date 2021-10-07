@@ -61,8 +61,10 @@ const StartGameScreen = (props) => {
                         value={enterdValue}
                     />
                     <View style={styles.buttonContainer}>
-                        <View style={styles.buttonStyle}><Button title='Reset' color={Colors.accent} onPress={resetInputHandler} /></View>
-                        <View style={styles.buttonStyle}><Button title='Confirm' color={Colors.primary} onPress={confirmInputHandler} /></View>
+                        <View style={styles.buttonStyle}>
+                            <Button title='Reset' color={Colors.accent} onPress={resetInputHandler} /></View>
+                        <View style={styles.buttonStyle}>
+                            <Button title='Confirm' color={Colors.primary} onPress={confirmInputHandler} /></View>
                     </View>
                 </Card>
                 {confirmedOutput}
