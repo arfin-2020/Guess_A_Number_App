@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View, Dimensions } from 'react-native';
 import BodyText from '../components/BodyText';
 import ButtonMain from '../components/ButtonMain';
 import Card from '../components/Card';
@@ -50,7 +50,7 @@ const StartGameScreen = (props) => {
         }}>
             <View style={styles.screen}>
                 <TitleText style={styles.title}>Start a new Game</TitleText>
-                <Card style={styles.inputContainer}>
+                <Card style={styles.CardContainer}>
                     <BodyText>Select a New Nubmer</BodyText>
                     <Input style={styles.input} blurOnSubmit
                         autoCapitalize='none'
@@ -87,9 +87,10 @@ const styles = StyleSheet.create({
        
     },
   
-    inputContainer: {
-        width: 300,
-        maxWidth: '80%',
+    CardContainer: {
+        width: '80%',
+        maxWidth: '95%',
+        minWidth:300,
         alignItems: 'center',
         // shadowColor:'black',
         // shadowRadius:6,
@@ -101,15 +102,16 @@ const styles = StyleSheet.create({
         // borderRadius:10,
     },
     buttonContainer: {
-
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-between',
         paddingHorizontal: 15,
+       
     },
 
     buttonStyle: {
-        width: 100,
+        // width: 90,
+        width: Dimensions.get('window').width/4
     },
     input: {
         width: 50

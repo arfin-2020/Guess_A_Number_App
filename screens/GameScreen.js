@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View, } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ButtonMain from '../components/ButtonMain';
@@ -105,14 +105,17 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: 'row',
-        maxWidth: '80%',
-        width: 300,
+        maxWidth: '90%',
+        width: 400,
         justifyContent: 'space-between',
-        marginTop: 20
+        marginTop: Dimensions.get('window').height > 600 ? 20 : 10
+        // marginTop:  20 ,
     },
     listContainer:{
-        width: '80%',
+        // width: '80%',
         flex: 1,
+        width: Dimensions.get('window').width > 500 ? '80%' : '100%',
+        
     },
     scrollViewContainer:{
         flexGrow:1,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View, Linking, TouchableOpacity } from 'react-native';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 import Colors from '../constant/color';
@@ -15,15 +15,27 @@ const GameOverScreen = (props) => {
                 <Image
                     fadeDuration={1000}
                     // source={require('../assets/success.jpg')} 
-                    source={{ uri: 'https://tgr.scdn2.secure.raxcdn.com/images/wysiwyg/_article/istockphoto-485966046-612x612.jpg' }} style={styles.imageStyle}
+                    source={{ uri: 'https://mir-s3-cdn-cf.behance.net/user/276/32b61e238986733.5bd1a477b4ee6.jpg' }} style={styles.imageStyle}
                     // resizeMode='stretch'
                     resizeMode='cover'
                 />
             </View>
             <View style={styles.resultContainer}>
-                <BodyText style={styles.resultText}> তোমার ফোনে আরও <Text style={styles.hightlight}>{roundsNumber} </Text> রাউন্ট লাগবে <Text style={styles.hightlight}>{userNumber}</Text> নাম্বার আন্দাজ করার জন্য। </BodyText>
+                <BodyText style={styles.resultText}> তোমার ফোনে <Text style={styles.hightlight}>{roundsNumber} </Text> বার লেগেছে <Text style={styles.hightlight}>{userNumber}</Text> নাম্বার আন্দাজ করতে । </BodyText>
             </View>
             <ButtonMain children={'NEW Game'} onPress={newGame} />
+            <View style={{marginTop:Dimensions.get('window').marginTop > 600 ? 70 : 20}}>
+                <TouchableOpacity
+                    onPress={() =>
+                        Linking.openURL(
+                            'https://github.com/arfin-2020'
+                        )
+                    }>
+                    <Text>Developed By <Text style={{color: Colors.primary, fontFamily:'OpenSans-Bold'}}>Arfin Chowdhury Arif</Text></Text>
+                </TouchableOpacity>
+
+            </View>
+
         </View>
     )
 
@@ -45,21 +57,23 @@ const styles = StyleSheet.create({
         borderRadius: 150,
         borderWidth: 3,
         borderColor: 'black',
-        width: 300,
-        height: 300,
+        // width: 300,
+        // height: 300,
+        width: Dimensions.get('window').width > 600 ? 300 : 150,
+        height: Dimensions.get('window').height > 600 ? 300 : 150,
         overflow: 'hidden',
     },
     resultContainer: {
-       marginHorizontal: 30,
-       marginVertical: 15,
+        marginHorizontal: 30,
+        marginVertical: 15,
     },
-    resultText:{
-        textAlign:'center',
-        fontSize: 20,
+    resultText: {
+        textAlign: 'center',
+        fontSize: Dimensions.get('window').fontSize > 600 ? 20 : 15,
     },
     hightlight: {
         color: Colors.accent,
-        fontFamily:'DancingScript-Regular',
+        fontFamily: 'DancingScript-Regular',
     }
 })
 export default GameOverScreen;

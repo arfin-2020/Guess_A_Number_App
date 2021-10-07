@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.accent,
     alignItems:'center',
     justifyContent:'center',
+    
   },
  
 })
