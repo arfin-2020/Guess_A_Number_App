@@ -1,13 +1,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Alert, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/Ionicons';
+import BodyText from '../components/BodyText';
 import ButtonMain from '../components/ButtonMain';
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import defaultStyle from '../constant/default-style';
-import BodyText from '../components/BodyText';
 
 const generateRandomBetween = (min, max, exclude) => {
     min = Math.ceil(min);
@@ -74,7 +74,8 @@ const GameScreen = (props) => {
         setPastGuesses(curPastGuesses  => [nextNumber,...curPastGuesses]);
     }
     return (
-        <View style={styles.screen}>
+        <ScrollView>
+            <View style={styles.screen}>
             <Text style={defaultStyle.title}>Opponent's Guess</Text>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card style={styles.buttonContainer}>
@@ -93,6 +94,7 @@ const GameScreen = (props) => {
             </ScrollView>
             </View>
         </View>
+        </ScrollView>
     )
 }
 

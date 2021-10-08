@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View , Dimensions} from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 
 const TitleText = (props) => {
@@ -17,7 +17,7 @@ const TitleText = (props) => {
 const styles = StyleSheet.create({
     title:{
         fontFamily: 'OpenSans-Bold',
-        fontSize: Dimensions.get('window').fontSize > 600 ? 18 : 15,
+        fontSize: Dimensions.get('window').width > 390 ? 18 : 15,
  
     }
 })

@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
-import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+    Alert,
+    Button,
+    Dimensions,
+    Keyboard, KeyboardAvoidingView, ScrollView,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback,
+    View
+} from 'react-native';
 import BodyText from '../components/BodyText';
 import ButtonMain from '../components/ButtonMain';
 import Card from '../components/Card';
@@ -7,12 +16,16 @@ import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import TitleText from '../components/TitleText';
 import Colors from '../constant/color';
+
+
 const StartGameScreen = (props) => {
 
     const [enterdValue, setEnterValue] = useState('')
     const [confirmed, setConfirmed] = useState(false);
     const [selectedNumber, setSelectedNumber] = useState();
+    const [buttonWidth, setButtonWidth] = useState(Dimensions.get('window').width/4)
 
+    
 
     const numberInputHandler = (inputNumebr) => {
         setEnterValue(inputNumebr.replace(/[^0-9]/g, ''));
@@ -20,7 +33,20 @@ const StartGameScreen = (props) => {
     const resetInputHandler = () => {
         setEnterValue('');
         setConfirmed(false)
+
     }
+
+    useEffect(()=>{
+        const updateLayout = () =>{
+            setButtonWidth(Dimensions.get('window').width/4)
+        }
+    
+        Dimensions.addEventListener('change', updateLayout);
+        return () =>{
+            Dimensions.remove('change', updateLayout)
+        }
+    })
+
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enterdValue);
         if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
@@ -45,9 +71,12 @@ const StartGameScreen = (props) => {
             )
     }
     return (
+        <ScrollView>
+        <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={30}>
         <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
         }}>
+            
             <View style={styles.screen}>
                 <TitleText style={styles.title}>Start a new Game</TitleText>
                 <Card style={styles.CardContainer}>
@@ -61,16 +90,18 @@ const StartGameScreen = (props) => {
                         value={enterdValue}
                     />
                     <View style={styles.buttonContainer}>
-                        <View style={styles.buttonStyle}>
+                        <View style={{width:buttonWidth}}>
                             <Button title='Reset' color={Colors.accent} onPress={resetInputHandler} /></View>
-                        <View style={styles.buttonStyle}>
+                        <View style={{width:buttonWidth}}>
                             <Button title='Confirm' color={Colors.primary} onPress={confirmInputHandler} /></View>
                     </View>
                 </Card>
                 {confirmedOutput}
             </View>
+           
         </TouchableWithoutFeedback>
-
+        </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 

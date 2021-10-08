@@ -1,6 +1,7 @@
 {
   "name": "guess_a_number_app",
   "version": "0.0.1",
+  "orientation":"default",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
