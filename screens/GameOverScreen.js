@@ -38,9 +38,7 @@ const GameOverScreen = (props) => {
                     }>
                     <Text>Developed By <Text style={{color: Colors.primary, fontFamily:'OpenSans-Bold'}}>Arfin Chowdhury Arif</Text></Text>
                 </TouchableOpacity>
-
             </View>
-
         </View>
        </ScrollView>
     )
@@ -54,6 +52,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 10
     },
     imageStyle: {
         height: '100%',

@@ -42,8 +42,9 @@ const StartGameScreen = (props) => {
         }
     
         Dimensions.addEventListener('change', updateLayout);
+
         return () =>{
-            Dimensions.remove('change', updateLayout)
+            Dimensions.removeEventListener('change', updateLayout)
         }
     })
 
