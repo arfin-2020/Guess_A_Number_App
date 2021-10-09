@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dimensions, Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Linking, ScrollView, StyleSheet, 
+Text, TouchableOpacity, View,  } from 'react-native';
 import BodyText from '../components/BodyText';
 import ButtonMain from '../components/ButtonMain';
 import TitleText from '../components/TitleText';
@@ -12,7 +13,8 @@ const GameOverScreen = (props) => {
         height: Dimensions.get('window').height,
     })
     return (
-       <ScrollView>
+  
+           <ScrollView>
             <View style={styles.screen}>
             <TitleText>This Game is over....</TitleText>
             <BodyText>Number of Rounds {roundsNumber}</BodyText>
@@ -41,6 +43,7 @@ const GameOverScreen = (props) => {
             </View>
         </View>
        </ScrollView>
+    
     )
 
 }
